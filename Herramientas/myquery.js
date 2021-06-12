@@ -223,6 +223,9 @@ $(document).ready(function(){
         if(pag=="gestionped"){//EVALUAMOS PAGINA EN QUE ESTA EL ADMIN
             cargarpedidos();//EJECUTAMOS ACCION PARA ESA PAGINA
         }//FINAL PAG GESTION PEDIDOS
+
+
+        
     }else{
         console.log("cliente");
     }
