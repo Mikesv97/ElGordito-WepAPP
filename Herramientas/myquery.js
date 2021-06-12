@@ -133,6 +133,18 @@ function cargarDelPed(id){
 
 }//FINAL FUNCION CARGARDEL PEDIDOS
 
+function cargarsugerencias(){
+    $.ajax({
+        url: '../Controlador/controladorsugerencias.php',
+        type: 'POST',
+        data: {key:"getTablaSug"}
+    }).done(function(resp){
+       $("#infosugerencias").empty();
+       $("#infosugerencias").append(resp);
+    }).fail(function(){
+        console.log("error");
+    });
+}
 
 
 /******************************************************************************************/
@@ -224,8 +236,10 @@ $(document).ready(function(){
             cargarpedidos();//EJECUTAMOS ACCION PARA ESA PAGINA
         }//FINAL PAG GESTION PEDIDOS
 
+        if(pag=="sugerenciascomb"){//EVALUAMOS PAGINA EN QUE ESTA EL ADMIN
+          cargarsugerencias();  //EJECUTAMOS ACCION PARA ESA PAGINA
+        }//FINAL PAG GESTION PEDIDOS
 
-        
     }else{
         console.log("cliente");
     }

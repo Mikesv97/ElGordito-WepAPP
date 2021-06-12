@@ -46,15 +46,15 @@ include '../Modelos/header.php';
     </div>
   </div>
 </nav>
-<div id="datapedidos" class="container-fluid ">
+<div id="datasugerencias" class="container-fluid ">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center bg-dark margintf2 text-white">
                 <h1 class="text-white">Detalle Sugerencias Para Combinar Concentrados</h1>
             </div>
         </div>
         <div class="row">
-            <div id="contenpedido" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 margint">
-              <div id="infopedido" class="text-center"></div>
+            <div id="contensugerencias" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 margint">
+              <div id="infosugerencias" class="text-center"></div>
               <div class="alert alert-danger" role="alert">
                <span class="btn-dark">NOTA:</span>&nbsp;&nbsp;Al Eliminar Un Registro, Se Da Por Entendido
                Que Este Ya Fué Puesto En Producción.

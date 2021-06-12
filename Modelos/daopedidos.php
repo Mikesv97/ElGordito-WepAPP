@@ -70,12 +70,4 @@ class DaoPedidos{
         $this->desconectar();
     }   
 }
-
-
-
-
-
-
-
-
 ?>
