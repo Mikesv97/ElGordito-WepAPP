@@ -131,7 +131,9 @@ function cargarDelPed(id){
         }//final de if del sweet alert
       });//final del sweet alert de consulta eliminar
 
-}
+}//FINAL FUNCION CARGARDEL PEDIDOS
+
+
 
 /******************************************************************************************/
 /******************************************************************************************/

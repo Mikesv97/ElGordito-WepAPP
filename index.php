@@ -47,9 +47,9 @@ $rol = $_SESSION["rol"];
         if($rol == "administrador"){
         echo '<a id="mp" class="nav-link" href="index.php">Materia Prima</a>';
         echo '<a class="nav-link" href="Vistas/gestionpedidos.php">Gestión De Pedidos</a>';
-        echo '<a class="nav-link" href="#">Sugerencias Concentrados</a>';
-        echo '<a class="nav-link" href="#">Usuarios</a>';
-        echo '<a class="nav-link" href="#">Reportes</a>';
+        echo '<a class="nav-link" href="Vistas/sugerenciasconcentrado.php">Sugerencias Concentrados</a>';
+        echo '<a class="nav-link" href="Vistas/usuarios.php">Usuarios</a>';
+        echo '<a class="nav-link" href="Vistas/reportes.php">Reportes</a>';
         }else{
         echo '<a class="nav-link" href="#">Concentrado</a>';
         echo '<a id="btnPedidos" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Realizar Pedido</a>';
