@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #F1F0EF;
+}
+
+.img-banner{
+    height: 40vw;
+}
+
+.admin-content{
+    background-color: #FFFFFF;
+    text-shadow: 5px 2px 4px black;
+}
+
+.margint{
+    margin-top: 0.7vw;
+}
+
+.margintf{
+    margin-top: 3.5vw;
+}
+
+.margintf2{
+    margin-top: 0.8vw;
+}
+
+div{
+    overflow: hidden;
+}
+
+h5{
+    color: black;
+}
+
+#btnNewMp{
+
+   padding: 0.5vw;
+   border-radius: 0.5vw;
+   float: left;
+   margin-bottom: 0.5vw;
+}
+
+.label{
+    border-radius: 10px;
+}
+
+
