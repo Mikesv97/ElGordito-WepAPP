@@ -106,6 +106,32 @@ function cargarpedidos(){
     });
 }//FINAL FUNCION CARGAR PEDIDOS DE CLIENTES
 
+function cargarDelPed(id){
+    var id = id;
+    Swal.fire({
+        title: 'Estas Seguro De Eliminar Este Registro?',
+        text: "No Podrás Deshacer Este Paso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminarlo!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "../Controlador/controladorpedidos.php",
+                type: "post",
+                data: {key:"EliminarPed", data: id}
+            }).done(function(resp){
+                Swal.fire(resp);
+               cargarpedidos();
+            }).fail(function(){
+                Swal.fire("Algo Salió Mal, Intentalo De Nuevo");
+            });//final de ajax eliminarmp
+        }//final de if del sweet alert
+      });//final del sweet alert de consulta eliminar
+
+}
 
 /******************************************************************************************/
 /******************************************************************************************/

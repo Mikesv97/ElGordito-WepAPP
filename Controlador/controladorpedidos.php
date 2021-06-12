@@ -16,6 +16,11 @@ if($_POST){
                $daopd->getTablaPedidos();
               
             break;
+            case "EliminarPed":
+                $id= $_POST["data"];
+                $daopd->eliminar($id);
+               
+             break;
 
         }
     }

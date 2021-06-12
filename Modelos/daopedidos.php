@@ -57,6 +57,18 @@ class DaoPedidos{
         $resultado->close();
         echo $tabla;
     }
+
+    public function eliminar($id){
+        $id = $id;
+        $sql ="delete from pedidos where id_pedido =".$id;
+        $this->conectar();
+        if($this->con->query($sql)){
+            echo "Registro Eliminado Con Exito";
+        }else{
+            echo "No Se Pudo Eliminar, Intente De Nuevo";
+        }
+        $this->desconectar();
+    }   
 }
 
 
