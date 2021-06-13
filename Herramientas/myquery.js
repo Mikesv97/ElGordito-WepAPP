@@ -238,6 +238,19 @@ $(document).ready(function(){
 
         if(pag=="sugerenciascomb"){//EVALUAMOS PAGINA EN QUE ESTA EL ADMIN
           cargarsugerencias();  //EJECUTAMOS ACCION PARA ESA PAGINA
+
+          $("#btnEliminarSug").on("click",function(){//EVENTO CLICK PARA ELIMINAR UNA SUGERENCIA
+
+            $("#idmp").show();
+            $("#idmp").attr("readonly", false);
+            $("#lbname").text("Ingresa El Numero De La Sugerencia De Combinación a Eliminar");
+            $("#nombremp").hide();
+            $("#lbcant").hide();
+            $("#cantmp").hide();
+            $("#helplbcant").hide();
+            $("#helplbname").hide();
+            
+          });
         }//FINAL PAG GESTION PEDIDOS
 
     }else{

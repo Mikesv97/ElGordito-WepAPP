@@ -36,7 +36,7 @@ h5{
     color: black;
 }
 
-#btnNewMp{
+#btnNewMp, #btnEliminarSug{
 
    padding: 0.5vw;
    border-radius: 0.5vw;

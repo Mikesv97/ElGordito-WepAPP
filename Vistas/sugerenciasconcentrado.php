@@ -34,7 +34,7 @@ include '../Modelos/header.php';
         if($rol == "administrador"){
         echo '<a id="mp" class="nav-link" href="../index.php">Materia Prima</a>';
         echo '<a class="nav-link" href="gestionpedidos.php">Gestión De Pedidos</a>';
-        echo '<a class="nav-link" href="../index.php">Sugerencias Concentrados</a>';
+        echo '<a class="nav-link" href="sugerenciasconcentrado.php">Sugerencias Concentrados</a>';
         echo '<a class="nav-link" href="usuarios.php">Usuarios</a>';
         echo '<a class="nav-link" href="reportes.php">Reportes</a>';
         }else{
@@ -53,8 +53,10 @@ include '../Modelos/header.php';
             </div>
         </div>
         <div class="row">
-            <div id="contensugerencias" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 margint">
-              <div id="infosugerencias" class="text-center"></div>
+        <div id="contentmp" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center margint">
+             <a id="btnEliminarSug" class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar Sugerencia</a>
+            <div id="infosugerencias" class="col-12 offset-lg-12"></div>
+          </div>
               <div class="alert alert-danger" role="alert">
                <span class="btn-dark">NOTA:</span>&nbsp;&nbsp;Al Eliminar Un Registro, Se Da Por Entendido
                Que Este Ya Fué Puesto En Producción.

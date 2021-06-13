@@ -14,7 +14,7 @@ if($_POST){
 
             case "getTablaSug":
                
-                $daosug->getTablaSugerencias()
+                $daosug->getTablaSugerencias();
               
             break;
 
