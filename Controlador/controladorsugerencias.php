@@ -18,9 +18,9 @@ if($_POST){
               
             break;
 
-            case "EliminarPed":
-
-               
+            case "eliminarSug":
+                $id = $_POST["data"];
+               $daosug->eliminar($id);
              break;
 
         }

@@ -243,6 +243,7 @@ $(document).ready(function(){
 
             $("#idmp").show();
             $("#idmp").attr("readonly", false);
+            $("#idmp").attr("type", "number");
             $("#lbname").text("Ingresa El Numero De La Sugerencia De Combinación a Eliminar");
             $("#nombremp").hide();
             $("#lbcant").hide();
@@ -250,8 +251,47 @@ $(document).ready(function(){
             $("#helplbcant").hide();
             $("#helplbname").hide();
             
-          });
+          });//FINAL EVENTO CLICK ELIMINAR REGISTRO (LLAMAR MODAL)
+
+          $("#btnModal").on("click",function(){
+            var id = $("#idmp").val();
+            if(id==0 || id < 0){
+                     
+                Swal.fire('Llena Los Campos', 'No Pueden Haber Campos Vacios, Ni Con Números Negativos','error');
+
+            }else{
+                Swal.fire({
+                    title: 'Estas Seguro De Eliminar Este Registro?',
+                    text: "No Podrás Deshacer Este Paso!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Eliminarlo!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "../Controlador/controladorsugerencias.php",
+                            type: "post",
+                            data: {key:"eliminarSug", data: id}
+                        }).done(function(resp){
+        
+                        Swal.fire(resp);
+
+    
+
+                        $("#miform")[0].reset();
+                        $('#staticBackdrop').modal('hide');
+                        cargarsugerencias();
+                        }).fail(function(){
+                            Swal.fire("Algo Salió Mal, Intentalo De Nuevo");
+                        });
+                    }//final de if del sweet alert
+                });//FINAL SWEET ALERT PREGUNTAR CONFIRM DEL
+            }//FINAL DEL ELSE DEL IF DE CAMPOS VACIOS
+            });//FINAL DE CLICK BOTON ELIMINAR
         }//FINAL PAG GESTION PEDIDOS
+
 
     }else{
         console.log("cliente");

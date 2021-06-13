@@ -58,7 +58,7 @@ class DaoCombinacion{
 
     public function eliminar($id){
         $id = $id;
-        $sql ="delete from pedidos where id_pedido =".$id;
+        $sql ="delete from combinacion where id_comb =".$id;
         $this->conectar();
         if($this->con->query($sql)){
             echo "Registro Eliminado Con Exito";
