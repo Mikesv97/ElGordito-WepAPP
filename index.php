@@ -4,8 +4,8 @@ session_start();
 include 'Modelos/daomateriaprima.php';
 $mp= new DaoMateriaPrima();
 
-$_SESSION["user"] = "Douglas Miguel";
-$_SESSION["rol"]="administrador";
+$_SESSION["user"] = "Maria Melissa";
+$_SESSION["rol"]="Cliente";
 
 $usuario=$_SESSION["user"];
 $rol = $_SESSION["rol"];
@@ -25,11 +25,11 @@ $rol = $_SESSION["rol"];
     /*OBTENGO VALORES DE ROL DE PHP EN JS PARA OCULTAR DIVS SEGÚN ROL */
       var rol ="";
       rol = "<?php echo $rol ?>"
-      if(rol == "administrador"){
-        role ="administrador";
+      if(rol == "Administrador"){
+        role ="Administrador";
         pag="adminmp";
       }else{
-        role ="cliente";         
+        role ="Cliente";         
       }    
     </script>
     <title>Bienvenidos</title>
@@ -44,7 +44,7 @@ $rol = $_SESSION["rol"];
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <?php 
-        if($rol == "administrador"){
+        if($rol == "Administrador"){
         echo '<a id="mp" class="nav-link" href="index.php">Materia Prima</a>';
         echo '<a class="nav-link" href="Vistas/gestionpedidos.php">Gestión De Pedidos</a>';
         echo '<a class="nav-link" href="Vistas/sugerenciasconcentrado.php">Sugerencias Concentrados</a>';

@@ -200,7 +200,7 @@ $(document).ready(function(){
     $("#idmp").hide();
     $("#rad").hide();
 
-    if(role=="administrador"){ //CONTROLAMOS EVENTOS JS SEGÚN ADMIN
+    if(role=="Administrador"){ //CONTROLAMOS EVENTOS JS SEGÚN ADMIN
         if(pag=="adminmp"){ //EVALUAMOS EN QUE PAG DE VISTA ADMIN ESTA
             $("#cliente").hide();//EJECUTAMOS ACCION PARA PAG MP DE ADMIN
                 cargartableMP();
