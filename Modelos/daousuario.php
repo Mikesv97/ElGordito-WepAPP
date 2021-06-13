@@ -42,7 +42,7 @@ class DaoUsuario{
         $tabla.= '<th scope="row">'.$fila["nombre"].'</th>';
         $tabla.='<td>'.$fila["correo"].'</td>';
         $tabla.='<td>'.$fila["nombre_rol"].'</td>';
-        $tabla .= "<td><button type='button' class='btn btn-warning text-white' data-toggle=\"modal\" data-target=\"#staticBackdrop\" href=''  onclick=\"javascript:cargarMoMP('".$fila["id_usuario"]."','".$fila["nombre"]."','".$fila["correo"]."','".$fila["id_rol"]."')\">Modificar</a></td>";
+        $tabla .= "<td><button type='button' class='btn btn-warning text-white' data-toggle=\"modal\" data-target=\"#staticBackdrop\" href=''  onclick=\"javascript:cargarMoMP('".$fila["id_usuario"]."','".$fila["nombre"]."','".$fila["correo"]."','".$fila["nombre_rol"]."')\">Modificar</a></td>";
     } 
                    
         $tabla.='</tr></tbody></table>';

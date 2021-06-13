@@ -46,15 +46,15 @@ include '../Modelos/header.php';
     </div>
   </div>
 </nav>
-<div id="datasugerencias" class="container-fluid ">
+<div id="datausuarios" class="container-fluid ">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center bg-dark margintf2 text-white">
                 <h1 class="text-white">Listado De Todos Los Usuarios Registrados</h1>
             </div>
         </div>
         <div class="row">
-        <div id="contentmp" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center margint">
-            <div id="infosugerencias" class="col-12 offset-lg-12"></div>
+        <div id="contentusuarios" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center margint">
+            <div id="infousuarios" class="col-12 offset-lg-12"></div>
           </div>
               <div class="alert alert-danger" role="alert">
                <span class="btn-dark">NOTA:</span>&nbsp;&nbsp;Solo Puedes Cambiar Rol De Un Usuario, No Puedes Eliminarlo, Ten

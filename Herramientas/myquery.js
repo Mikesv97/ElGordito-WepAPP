@@ -146,6 +146,21 @@ function cargarsugerencias(){
     });
 }
 
+function cargarusuarios(){
+    $.ajax({
+        url: '../Controlador/controladorusuario.php',
+        type: 'POST',
+        data: {key:"getUsuarios"}
+    }).done(function(resp){
+        console.log(resp);
+         $("#infousuarios").empty();
+         $("#infousuarios").append(resp);
+    }).fail(function(){
+        console.log("error");
+    });
+
+}
+
 
 /******************************************************************************************/
 /******************************************************************************************/
@@ -291,6 +306,10 @@ $(document).ready(function(){
             }//FINAL DEL ELSE DEL IF DE CAMPOS VACIOS
             });//FINAL DE CLICK BOTON ELIMINAR
         }//FINAL PAG GESTION PEDIDOS
+
+        if(pag=="usuarios"){
+            cargarusuarios();
+        }
 
 
     }else{
