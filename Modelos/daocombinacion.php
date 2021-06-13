@@ -33,8 +33,6 @@ class DaoCombinacion{
         left join usuario on usuario.id_usuario = combinacion.id_usuario";
         $this->conectar();
         $resultado = $this->con->query($sql);
-        $this->conectar();
-        $descripcion = $this->con->query($sql);
         $this->desconectar();
 
         //armar la tabla html

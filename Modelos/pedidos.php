@@ -6,8 +6,8 @@ class Pedidos {
     private $idusuario;
 
     public function __construct($idpedido, $idusuario){
-        $this->$idpedido = $idpedido;
-        $this->$idusuario = $idusuario;
+        $this->idpedido = $idpedido;
+        $this->idusuario = $idusuario;
 
     }
 
