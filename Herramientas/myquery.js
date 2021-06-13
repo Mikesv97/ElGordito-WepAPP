@@ -370,6 +370,50 @@ $(document).ready(function(){
                     });//FINAL SWEET ALERT PREGUNTAR CONFIRM DEL
                 });//FINAL DE CLICK BOTON ELIMINAR
         }//FINAL PAG USUARIOS
+
+        if(pag=="reportes"){
+            $.ajax({
+                url: '../Modelos/daoreporte.php',
+                type: 'POST',
+                data: {key: "cargaruser"}
+            }).done(function(resp){
+           
+                 $("#cliente").empty();
+                $("#cliente").append(resp);
+            }).fail(function(){
+                console.log("error");
+            });
+
+            $.ajax({
+                url: '../Modelos/daoreporte.php',
+                type: 'POST',
+                data: {key: "cargarfecha"}
+            }).done(function(resp){
+                
+                 $("#fecha").empty();
+                $("#fecha").append(resp);
+            }).fail(function(){
+                console.log("error");
+            });
+
+            $("#Reportes").change(function() {
+                alert( "Handler for .change() called." );
+            });
+
+           $("#btnReporte").on("click",function(){
+               var reporte = $("#Reportes").val();
+            $.ajax({
+                url: '../Modelos/daoreporte.php',
+                type: 'POST',
+                data: {key: reporte}
+            }).done(function(resp){
+                 $("#contenreport").attr("src","");
+                $("#contenreport").attr("src",resp);
+            }).fail(function(){
+                console.log("error");
+            });
+           });
+        }
     }else{
         console.log("cliente");
     }

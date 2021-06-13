@@ -44,6 +44,15 @@ h5{
    margin-bottom: 0.5vw;
 }
 
+#btnReporte{
+    margin:0 auto;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+    margin-bottom: 0.2vw;
+    
+}
+
 .label{
     border-radius: 10px;
 }

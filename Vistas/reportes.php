@@ -1,6 +1,6 @@
 <?php
 include '../Modelos/credenciales.php';
-require_once '../Herramientas/mpdf/mpdf.php';
+
 session_start();
 $_SESSION["user"] = "Douglas Miguel";
 $_SESSION["rol"]="administrador";
@@ -49,64 +49,39 @@ include '../Modelos/header.php';
   </div>
 </nav>
 <div id="datausuarios" class="container-fluid ">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center bg-dark margintf2 text-white">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center bg-dark margintf2 text-white">
                 <h1 class="text-white">Generar Reportes</h1>
-            </div>
         </div>
-        <div class="row">
+    </div>
+    <div class="row">
         <div id="contentusuarios" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center margint">
             <div id="infousuarios" class="col-12 offset-lg-12">
-            
-            <iframe src="../Reportes/ReporteMateriaPrima.pdf" style="width: 80%; height: 500px;" scrolling="yes">
-            </div>
-          </div>
-              <div class="alert alert-danger" role="alert">
-               <span class="btn-dark">NOTA:</span>&nbsp;&nbsp;Solo Puedes Cambiar Rol De Un Usuario, No Puedes Eliminarlo, Ten
-               En Cuenta Que Si Asignas Rol Administrador A Un Usuario Con Rol Cliente, Este Podrá Ver Toda La Información Del Sistema,
-               , Por Favor No Olvides Esto.
-            </div>
+                <label for="reportes" class="form-label"><strong>SELECCIONA EL TIPO DE REPORTE</strong></label>
+                &nbsp;&nbsp;&nbsp;
+                <select name="Reportes" id="Reportes" class="form-select" style="width:300px; margin:0 auto">
+                <option value="materiaprima">Materia Prima</option>
+                <option value="materiaprimaescasa">Materia Prima Escasa</option>
+                <option value="mezclas">Mezclas</option>
+                <option value="pedidos">Pedidos</option>
+                <option value="solicitudes">Solicitudes</option>
+                </select><br>
+                <label for="cliente" class="form-label"><strong>SELECCIONA EL CLIENTE</strong></label>
+                &nbsp;&nbsp;&nbsp;
+                <select name="Reportes" id="cliente" class="form-select" style="width:300px; margin:0 auto">
+                </select><br> 
+                <label for="fecha" class="form-label"><strong>SELECCIONA LA FECHA</strong></label>
+                &nbsp;&nbsp;&nbsp;
+                <select name="Reportes" id="fecha" class="form-select" style="width:300px; margin:0 auto">
+                </select><br> 
+                <button type="button" id="btnReporte" class="btn btn-dark " >Aceptar</button>
+                <br>
+                <br>
+                <iframe id="contenreport" src="" style="width: 80%; height: 500px;" scrolling="yes">
             </div>
         </div>
-</div><br>
+    </div>
+ </div><br>
 <?php
 include '../Modelos/footer.php';
-?>
-<?php
-
- //sacamos los datos de la base de datos
- $con = new mysqli("localhost","root","", "elgordito");
- $sql ="select * from materia_prima";
- $res = $con->query($sql);
- $tabla ="<table border='1'><thead><tr><th>CODIGO</th><th>NOMBRE</th><th>CANTIDAD</th></tr></thead><tbody>";
- while($fila = mysqli_fetch_assoc($res)){
-     $tabla .= "<tr>";
- 
-     $tabla .= "<td>";
-     $tabla .= $fila['id_mp'];
-     $tabla .= "</td>";
- 
-     $tabla .= "<td>";
-     $tabla .= $fila['nombre'];
-     $tabla .= "</td>";
- 
-     $tabla .= "<td>";
-     $tabla .= $fila['cantidad'];
-     $tabla .= "</td>";
- 
-     $tabla .= "</tr>";
- }
- $tabla .= "</tbody></table>";
- $con->close();
- $res->close();
- $reporte = new mPDF('c','A4');
- $logo = "<img src='img/logo.png' style='width: 200px; height: 75px;'>";
- $encabezado= "<H3>REPORTE DE MATERIA PRIMA</H3><hr>";
- 
- $reporte->WriteHTML($logo);
- $reporte->WriteHTML($encabezado);
- $reporte->WriteHTML($tabla);
- $reporte->Output('../Reportes/ReporteMateriaPrima.pdf');
-
-
 ?>
