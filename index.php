@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-include 'Modelos/daomateriaprima.php';
-$mp= new DaoMateriaPrima();
 
-$_SESSION["user"] = "Maria Melissa";
-$_SESSION["rol"]="Cliente";
-$_SESSION["id"]="5";
-
-
-$usuario=$_SESSION["user"];
+$usuario=$_SESSION["usuario"];
 $rol = $_SESSION["rol"];
+
+if(!isset($_SESSION["usuario"])){
+  header("location: Vistas/login.php");
+}
+if(!isset($_SESSION["rol"])){
+  header("location: Vistas/login.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -58,6 +58,7 @@ $rol = $_SESSION["rol"];
         echo '<a id="btnPedidos" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Realizar Pedido</a>';
         echo '<a id="btnComb" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sugerir Combinación</a>';
         }?>
+        <a class="nav-link" href="Vistas/login.php?cerrar=true;">Salir</a>
       </div>
     </div>
   </div>

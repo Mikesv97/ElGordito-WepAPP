@@ -479,45 +479,45 @@ $(document).ready(function(){
            });//FIN BTN REPORTE
         }//FIN PAG REPORTE
     }else{
-        $("#admin").hide();
-        $("#selectindex").hide();
-        cargarproductos();
-        cargarcmbconcentrado();
+        if(pag=="indexcliente"){
+            $("#admin").hide();
+            $("#selectindex").hide();
+            cargarproductos();
+            cargarcmbconcentrado();
 
-        $("#btnPedidos").on("click",function(){
-            $("#selectindex").show();
-            $("#lbname").hide();
-            $("#nombremp").hide();
-            $("#helplbname").hide();
-            $("#lbcant").text("Ingresa Cantidad A Pedir");
-            $("#helplbcant").text("La Cantidad Se Maneja En Quintales (qq)");
-            action="newpedido";                
-
-        });
-
-        $("#btnModal").on("click",function(){
-            var cantidad =  $("#cantmp").val();
-            var concentrado = $("#concentrado").val();
-
-            if(cantidad<0 || cantidad==0){
-                swal.fire("No Pueden Haber Campos Vacios O Negativos");
-            }else{
-                var form = $("#miform").serialize();
-                $.ajax({
-                    url: 'Controlador/controladorclientes.php',
-                    type: 'POST',
-                    data: {key:"NewPedido", data:form}
-                }).done(function(resp){
-                    swal.fire("Ingresado Con Exito",resp,"info");
-                    $("#miform")[0].reset();
-                    $('#staticBackdrop').modal('hide');
-                }).fail(function(){
-                    console.log("error");
+            $("#btnPedidos").on("click",function(){
+                $("#selectindex").show();
+                $("#lbname").hide();
+                $("#nombremp").hide();
+                $("#helplbname").hide();
+                $("#lbcant").text("Ingresa Cantidad A Pedir");
+                $("#helplbcant").text("La Cantidad Se Maneja En Quintales (qq)");
+                action="newpedido";      
+                
+                $("#btnModal").on("click",function(){
+                    var cantidad =  $("#cantmp").val();
+                    var concentrado = $("#concentrado").val();
+        
+                    if(cantidad<0 || cantidad==0){
+                        swal.fire("No Pueden Haber Campos Vacios O Negativos");
+                    }else{
+                        var form = $("#miform").serialize();
+                        $.ajax({
+                            url: 'Controlador/controladorclientes.php',
+                            type: 'POST',
+                            data: {key:"NewPedido", data:form}
+                        }).done(function(resp){
+                            swal.fire("Ingresado Con Exito",resp,"info");
+                            $("#miform")[0].reset();
+                            $('#staticBackdrop').modal('hide');
+                        }).fail(function(){
+                            console.log("error");
+                        });
+                    }
                 });
-            }
-        });
+    
+            });
+            
+        }
     }
-   
-
-
 });

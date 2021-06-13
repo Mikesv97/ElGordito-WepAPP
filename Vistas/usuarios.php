@@ -1,9 +1,8 @@
 <?php
 session_start();
-$_SESSION["user"] = "Douglas Miguel";
-$_SESSION["rol"]="administrador";
 
-$usuario=$_SESSION["user"];
+
+$usuario=$_SESSION["usuario"];
 $rol = $_SESSION["rol"];
 ?>
 <?php
@@ -11,9 +10,10 @@ include '../Modelos/header.php';
 ?>
 <script>
     var rol ="";
-    rol = "<?php echo $rol ?>"
-    if(rol == "administrador"){
-          role ="administrador";
+    rol = "<?php echo $rol ?>";
+    console.log(rol);
+    if(rol == "Administrador"){
+          role ="Administrador";
           pag="usuarios";
     }else{
           role ="cliente";         
@@ -31,7 +31,7 @@ include '../Modelos/header.php';
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <?php 
-        if($rol == "administrador"){
+        if($rol == "Administrador"){
         echo '<a id="mp" class="nav-link" href="../index.php">Materia Prima</a>';
         echo '<a class="nav-link" href="gestionpedidos.php">Gestión De Pedidos</a>';
         echo '<a class="nav-link" href="sugerenciasconcentrado.php">Sugerencias Concentrados</a>';
@@ -42,6 +42,7 @@ include '../Modelos/header.php';
         echo '<a id="btnPedidos" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Realizar Pedido</a>';
         echo '<a class="nav-link" href="#">Sugerir Combinación</a>';
         }?>
+        <a class="nav-link" href="login.php?cerrar=true;">Salir</a>
       </div>
     </div>
   </div>
