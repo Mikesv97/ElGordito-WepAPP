@@ -74,6 +74,27 @@ if($_POST){
            echo "<script>swal.fire('Datos Invalidos, Intenta De Nuevo')</script>";
        }
     }
+
+    if(isset($_POST["btnnuevo"])){
+        $nombre = $_POST["nombre"];
+        $correo = $_POST["correo"];
+        $pass = $_POST["pass"];
+        $pass = $_POST["pass2"];
+        
+        if($pass != $pass2){
+            echo "<script>swal.fire('Las Contraseñas No Coinciden')</script>";
+        }else{
+            $con = new mysqli("localhost","root","", "elgordito");
+            $sql ="insert into usuario values (null, '".$nombre."', '".$pass."', '".$correo."',2)";
+            
+
+            if($con->query($sql)){
+                echo "<script>swal.fire('Registrado Con Exito','Gracias Por Registrarte Con Nosotros','success')</script>";
+            }else{
+                echo "<script>swal.fire('Hubo Un Problema, Intenta De Nuevo')</script>";
+            }
+        }
+    }
 }
 
 if(isset($_REQUEST["cerrar"])){
