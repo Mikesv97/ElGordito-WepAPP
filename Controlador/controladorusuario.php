@@ -17,6 +17,14 @@ if($_POST){
                 $daouser-> getUsuarios();
               
             break;
+            case "editaruser":
+
+                parse_str($_POST["data"],$data);
+                $daouser->modificar($_POST["id"], $data["rol"]);
+               
+               
+              
+            break;
 
         }
     }

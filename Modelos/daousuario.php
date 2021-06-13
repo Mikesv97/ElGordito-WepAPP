@@ -51,14 +51,23 @@ class DaoUsuario{
         echo $tabla;
     }
 
-    public function eliminar($id){
+    public function modificar($id, $rol){
         $id = $id;
-        $sql ="delete from combinacion where id_comb =".$id;
+        $role = $rol;
+        $rol=0;
+
+      if($role=="Administrador"){
+          $rol=1;
+        }else{
+            $rol=2;
+        }
+
+        $sql ="update usuario set id_rol=".$rol." where id_usuario =".$id;
         $this->conectar();
         if($this->con->query($sql)){
-            echo "Registro Eliminado Con Exito";
+            echo "Rol De Usuario Modificado Con Exito";
         }else{
-            echo "No Se Pudo Eliminar, Intente De Nuevo";
+            echo "No Se Pudo Modificar, Intente De Nuevo";
         }
         $this->desconectar();
     }   

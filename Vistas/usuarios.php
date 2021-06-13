@@ -58,7 +58,7 @@ include '../Modelos/header.php';
           </div>
               <div class="alert alert-danger" role="alert">
                <span class="btn-dark">NOTA:</span>&nbsp;&nbsp;Solo Puedes Cambiar Rol De Un Usuario, No Puedes Eliminarlo, Ten
-               En Cuenta Que Si Asignas Rol Administrador A Un Usuario Con Rol Cliente, Este Podrá Ver Toda La Información Del Sistema
+               En Cuenta Que Si Asignas Rol Administrador A Un Usuario Con Rol Cliente, Este Podrá Ver Toda La Información Del Sistema,
                , Por Favor No Olvides Esto.
             </div>
             </div>

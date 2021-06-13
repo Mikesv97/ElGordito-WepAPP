@@ -178,6 +178,7 @@ function  cargarMoUser(id,nombre,correo, rol){
         $("#rol2").attr('checked', 'checked');
       }
 
+    $("#idmp").val(id);
     $("#lbname").text("Selecciona Un Rol Para El Usuario");
     $("#nombremp").hide();
     $("#helplbname").hide();
@@ -338,6 +339,36 @@ $(document).ready(function(){
 
         if(pag=="usuarios"){
             cargarusuarios();
+
+            $("#btnModal").on("click",function(){
+                var id = $("#idmp").val();
+                var form = $("#miform").serialize();
+                    Swal.fire({
+                        title: 'Estas Seguro De Modificar El Rol De Este Usuario?',
+                        text: "Solo Si Estas Seguro Continua!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, Modifcarlo!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: "../Controlador/controladorusuario.php",
+                                type: "post",
+                                data: {key:"editaruser", data: form, id:id}
+                            }).done(function(resp){
+                            Swal.fire(resp);
+                            $("#miform")[0].reset();
+                            $('#staticBackdrop').modal('hide');
+                            cargarusuarios();
+                            
+                            }).fail(function(){
+                                Swal.fire("Algo Salió Mal, Intentalo De Nuevo");
+                            });
+                        }//final de if del sweet alert
+                    });//FINAL SWEET ALERT PREGUNTAR CONFIRM DEL
+                });//FINAL DE CLICK BOTON ELIMINAR
         }//FINAL PAG USUARIOS
     }else{
         console.log("cliente");
