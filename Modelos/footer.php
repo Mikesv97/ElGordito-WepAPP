@@ -30,6 +30,12 @@
           <label id="lbcant" for="cantmp" class="form-label bg-secondary">Cantidad Materia Prima</label>
           <input id="cantmp" type="number" value="0" class="form-control" name="cantmp" required>
           <div id="helplbcant" class="form-text">Ingresa La Cantidad a Ingresar De Materia Prima</div><br>
+          <div id="rad"  class="mb-3 form-check">
+            <input type="radio" class="form-check-input" id="rol1" name="rol" value="cliente">
+            <label class="form-check-label text-dark" for="exampleCheck1">Cliente</label><br>
+            <input type="radio" class="form-check-input" id="rol2" name="rol" value="administrador">
+            <label class="form-check-label text-dark" for="exampleCheck1">Administrador</label><br>
+        </div>
           <button type="button" id="btnModal" class="btn btn-dark" >Aceptar</button>
         </from>
       </div>

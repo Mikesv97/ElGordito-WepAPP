@@ -144,7 +144,7 @@ function cargarsugerencias(){
     }).fail(function(){
         console.log("error");
     });
-}
+}//FINAL FUNCION CARGAR SUGERENCIAS
 
 function cargarusuarios(){
     $.ajax({
@@ -152,15 +152,43 @@ function cargarusuarios(){
         type: 'POST',
         data: {key:"getUsuarios"}
     }).done(function(resp){
-        console.log(resp);
+
          $("#infousuarios").empty();
          $("#infousuarios").append(resp);
     }).fail(function(){
         console.log("error");
     });
 
-}
+}//FINAL FUNCION CARGAR USUARIOS
 
+function  cargarMoUser(id,nombre,correo, rol){
+    var id = id;
+    var nombre= nombre;
+    var correo = correo;
+    var rol = rol;
+
+   if(rol =="Cliente"){
+        
+        $("#rol1").attr('checked', 'checked');
+   
+      }
+      
+      if(rol=="Administrador"){
+          
+        $("#rol2").attr('checked', 'checked');
+      }
+
+    $("#lbname").text("Selecciona Un Rol Para El Usuario");
+    $("#nombremp").hide();
+    $("#helplbname").hide();
+    $("#lbcantmp").hide();
+    $("#lbcant").hide();
+    $("#cantmp").hide();
+    $("#helplbcant").hide();
+    $("#rad").show();
+    $("#staticBackdrop").modal("show");
+
+}//FINAL FUNCION CARGAR MODIF USUARIO
 
 /******************************************************************************************/
 /******************************************************************************************/
@@ -169,6 +197,7 @@ function cargarusuarios(){
 //TODO EL CODIGO PARA JQUERY CUANDO EL DOM ESTE CARGADO COMPLETAMENTE
 $(document).ready(function(){
     $("#idmp").hide();
+    $("#rad").hide();
 
     if(role=="administrador"){ //CONTROLAMOS EVENTOS JS SEGÚN ADMIN
         if(pag=="adminmp"){ //EVALUAMOS EN QUE PAG DE VISTA ADMIN ESTA
@@ -309,9 +338,7 @@ $(document).ready(function(){
 
         if(pag=="usuarios"){
             cargarusuarios();
-        }
-
-
+        }//FINAL PAG USUARIOS
     }else{
         console.log("cliente");
     }
