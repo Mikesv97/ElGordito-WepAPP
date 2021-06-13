@@ -66,11 +66,11 @@ include '../Modelos/header.php';
                 <option value="pedidos">Pedidos</option>
                 <option value="solicitudes">Solicitudes</option>
                 </select><br>
-                <label for="cliente" class="form-label"><strong>SELECCIONA EL CLIENTE</strong></label>
+                <label id="lbuser" for="cliente" class="form-label"><strong>SELECCIONA EL CLIENTE</strong></label>
                 &nbsp;&nbsp;&nbsp;
                 <select name="Reportes" id="cliente" class="form-select" style="width:300px; margin:0 auto">
                 </select><br> 
-                <label for="fecha" class="form-label"><strong>SELECCIONA LA FECHA</strong></label>
+                <label id="lbfecha" for="fecha" class="form-label"><strong>SELECCIONA LA FECHA</strong></label>
                 &nbsp;&nbsp;&nbsp;
                 <select name="Reportes" id="fecha" class="form-select" style="width:300px; margin:0 auto">
                 </select><br> 

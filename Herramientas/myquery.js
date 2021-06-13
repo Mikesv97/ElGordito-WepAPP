@@ -372,6 +372,11 @@ $(document).ready(function(){
         }//FINAL PAG USUARIOS
 
         if(pag=="reportes"){
+            $("#fecha").hide();
+            $("#cliente").hide();
+            $("#lbfecha").hide();
+            $("#lbuser").hide();
+            //PARA CARGAR USUARIOS EN CMB
             $.ajax({
                 url: '../Modelos/daoreporte.php',
                 type: 'POST',
@@ -382,9 +387,9 @@ $(document).ready(function(){
                 $("#cliente").append(resp);
             }).fail(function(){
                 console.log("error");
-            });
+            });//FIN CARGAR USUARIOS CMB
 
-            $.ajax({
+            $.ajax({//CARGAR FECHAS CMB
                 url: '../Modelos/daoreporte.php',
                 type: 'POST',
                 data: {key: "cargarfecha"}
@@ -394,26 +399,57 @@ $(document).ready(function(){
                 $("#fecha").append(resp);
             }).fail(function(){
                 console.log("error");
-            });
+            });//FIN CARGAR FECHA CMB
 
+            //ACTIVAR CMB USUARIO Y FECHA PARA REPORTE PEDIDOS
             $("#Reportes").change(function() {
-                alert( "Handler for .change() called." );
-            });
+                var selec = $("#Reportes").val();
+                if(selec=="pedidos"){
+                    $("#lbfecha").show();
+                    $("#cliente").show();
+                    $("#fecha").show();
+                    $("#lbuser").show();
+                }else{
+                    $("#fecha").hide();
+                    $("#cliente").hide();
+                    $("#lbfecha").hide();
+                    $("#lbuser").hide();
 
+                }
+            });//FIN CMB ACTIVAR USUARIO Y FEHCHA
+
+            //CLICK BTN REPORTE
            $("#btnReporte").on("click",function(){
                var reporte = $("#Reportes").val();
-            $.ajax({
-                url: '../Modelos/daoreporte.php',
-                type: 'POST',
-                data: {key: reporte}
-            }).done(function(resp){
-                 $("#contenreport").attr("src","");
-                $("#contenreport").attr("src",resp);
-            }).fail(function(){
-                console.log("error");
-            });
-           });
-        }
+               if(reporte=="pedidos"){
+                var user =$("#cliente").val();
+                var fecha = $("#fecha").val();
+                $.ajax({
+                    url: '../Modelos/daoreporte.php',
+                    type: 'POST',
+                    data: {key: reporte, user: user, fecha:fecha}
+                }).done(function(resp){
+                   
+                     $("#contenreport").attr("src","");
+                   $("#contenreport").attr("src",resp);
+                }).fail(function(){
+                    swall.fire("Cliente Sin Pedidos","El Cliente No Ha Hecho Pedidos En Esa Fecha","info");
+                });//FIN AJAX REPORTE
+               }else{
+                $.ajax({
+                    url: '../Modelos/daoreporte.php',
+                    type: 'POST',
+                    data: {key: reporte}
+                }).done(function(resp){
+                     $("#contenreport").attr("src","");
+                    $("#contenreport").attr("src",resp);
+                }).fail(function(){
+                    console.log("error");
+                });//FIN AJAX REPORTE
+               }
+            
+           });//FIN BTN REPORTE
+        }//FIN PAG REPORTE
     }else{
         console.log("cliente");
     }

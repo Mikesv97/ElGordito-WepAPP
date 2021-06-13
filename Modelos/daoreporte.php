@@ -146,6 +146,124 @@ if($_POST){
          echo $opciones;
             
         break;
+        case "pedidos":
+            $user= $_POST["user"];
+            $fecha=$_POST["fecha"];
+        
+            $con = new mysqli("localhost","root","", "elgordito");
+            $sql ="	select detalle_pedido.id_detalle, pedidos.id_pedido, usuario.nombre, concentrados.nombre as concentrado, detalle_pedido.cantidad, detalle_pedido.fecha 
+        from detalle_pedido  
+        inner join pedidos  on detalle_pedido.id_pedido = pedidos.id_pedido 
+        inner join concentrados on  detalle_pedido.id_concentrado = concentrados.id_concentrado 
+        left join usuario on usuario.id_usuario = pedidos.id_usuario where pedidos.id_usuario =".$user." and 
+        detalle_pedido.fecha ='".$fecha."'";
+
+            $res = $con->query($sql);
+            $tabla ="<table border='1'><thead><tr><th># DETALLE</th><th># PEDIDO</th>
+            <th>NOMBRE CLIENTE</th><th>CONCENTRADO</th></tr><th>CANTIDAD</th></tr><th>FECHA</th></thead><tbody>";
+            while($fila = mysqli_fetch_assoc($res)){
+                $tabla .= "<tr>";
+            
+                $tabla .= "<td>";
+                $tabla .= $fila['id_detalle'];
+                $tabla .= "</td>";
+            
+                $tabla .= "<td>";
+                $tabla .= $fila['id_pedido'];
+                $tabla .= "</td>";
+            
+                $tabla .= "<td>";
+                $tabla .= $fila['nombre'];
+                $tabla .= "</td>";
+
+                $tabla .= "<td>";
+                $tabla .= $fila['concentrado'];
+                $tabla .= "</td>";
+
+                $tabla .= "<td>";
+                $tabla .= $fila['cantidad'];
+                $tabla .= "</td>";
+
+                $tabla .= "<td>";
+                $tabla .= $fila['fecha'];
+                $tabla .= "</td>";
+            
+                $tabla .= "</tr>";
+            }
+            $tabla .= "</tbody></table>";
+            $con->close();
+            $res->close();
+            $reporte = new mPDF('c','A4');
+            $logo = "<img  src='../Herramientas/imagenes/logofot.png' style='width: 200px; height: 200px;'>";
+            $encabezado= "<H3>REPORTE DE PEDIDOS SEGÚN FECHA Y CLIENTE</H3><hr>";
+            
+            $reporte->WriteHTML($logo);
+            $reporte->WriteHTML($encabezado);
+            $reporte->WriteHTML($tabla);
+            $reporte->Output('../Reportes/ReportePedidos.pdf');
+
+            echo "../Reportes/ReportePedidos.pdf";
+            
+        break;
+        case "solicitudes":
+            $user= $_POST["user"];
+            $fecha=$_POST["fecha"];
+        
+            $con = new mysqli("localhost","root","", "elgordito");
+            $sql ="	select detalle_pedido.id_detalle, pedidos.id_pedido, usuario.nombre, concentrados.nombre as concentrado, detalle_pedido.cantidad, detalle_pedido.fecha 
+        from detalle_pedido  
+        inner join pedidos  on detalle_pedido.id_pedido = pedidos.id_pedido 
+        inner join concentrados on  detalle_pedido.id_concentrado = concentrados.id_concentrado 
+        left join usuario on usuario.id_usuario = pedidos.id_usuario where pedidos.id_usuario =".$user." and 
+        detalle_pedido.fecha ='".$fecha."'";
+
+            $res = $con->query($sql);
+            $tabla ="<table border='1'><thead><tr><th># DETALLE</th><th># PEDIDO</th>
+            <th>NOMBRE CLIENTE</th><th>CONCENTRADO</th></tr><th>CANTIDAD</th></tr><th>FECHA</th></thead><tbody>";
+            while($fila = mysqli_fetch_assoc($res)){
+                $tabla .= "<tr>";
+            
+                $tabla .= "<td>";
+                $tabla .= $fila['id_detalle'];
+                $tabla .= "</td>";
+            
+                $tabla .= "<td>";
+                $tabla .= $fila['id_pedido'];
+                $tabla .= "</td>";
+            
+                $tabla .= "<td>";
+                $tabla .= $fila['nombre'];
+                $tabla .= "</td>";
+
+                $tabla .= "<td>";
+                $tabla .= $fila['concentrado'];
+                $tabla .= "</td>";
+
+                $tabla .= "<td>";
+                $tabla .= $fila['cantidad'];
+                $tabla .= "</td>";
+
+                $tabla .= "<td>";
+                $tabla .= $fila['fecha'];
+                $tabla .= "</td>";
+            
+                $tabla .= "</tr>";
+            }
+            $tabla .= "</tbody></table>";
+            $con->close();
+            $res->close();
+            $reporte = new mPDF('c','A4');
+            $logo = "<img  src='../Herramientas/imagenes/logofot.png' style='width: 200px; height: 200px;'>";
+            $encabezado= "<H3>REPORTE DE PEDIDOS SEGÚN FECHA Y CLIENTE</H3><hr>";
+            
+            $reporte->WriteHTML($logo);
+            $reporte->WriteHTML($encabezado);
+            $reporte->WriteHTML($tabla);
+            $reporte->Output('../Reportes/ReportePedidos.pdf');
+
+            echo "../Reportes/ReportePedidos.pdf";
+            
+        break;
     }
 
 
