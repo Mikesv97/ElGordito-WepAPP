@@ -6,6 +6,8 @@ $mp= new DaoMateriaPrima();
 
 $_SESSION["user"] = "Maria Melissa";
 $_SESSION["rol"]="Cliente";
+$_SESSION["id"]="5";
+
 
 $usuario=$_SESSION["user"];
 $rol = $_SESSION["rol"];
@@ -29,7 +31,8 @@ $rol = $_SESSION["rol"];
         role ="Administrador";
         pag="adminmp";
       }else{
-        role ="Cliente";         
+        role ="Cliente";
+        pag="indexcliente";        
       }    
     </script>
     <title>Bienvenidos</title>
@@ -51,9 +54,9 @@ $rol = $_SESSION["rol"];
         echo '<a class="nav-link" href="Vistas/usuarios.php">Usuarios</a>';
         echo '<a class="nav-link" href="Vistas/reportes.php">Reportes</a>';
         }else{
-        echo '<a class="nav-link" href="#">Concentrado</a>';
+        echo '<a class="nav-link" href="index.php">Concentrado</a>';
         echo '<a id="btnPedidos" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Realizar Pedido</a>';
-        echo '<a class="nav-link" href="#">Sugerir Combinación</a>';
+        echo '<a id="btnComb" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sugerir Combinación</a>';
         }?>
       </div>
     </div>
@@ -109,13 +112,7 @@ $rol = $_SESSION["rol"];
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center margint">
             <h2 class="bg-dark text-white margint">Estos Son Nuestros Productos Para Ti</h2>
-            <p>
-                HOLA ACÁ IRIA LA TABLA CONCENTRADOS CON SU RESPECTIVA INFO<BR>
-                HOLA ACÁ IRIA LA TABLA CONCENTRADOS CON SU RESPECTIVA INFO<BR>
-                HOLA ACÁ IRIA LA TABLA CONCENTRADOS CON SU RESPECTIVA INFO<BR>
-                HOLA ACÁ IRIA LA TABLA CONCENTRADOS CON SU RESPECTIVA INFO<BR>
-                HOLA ACÁ IRIA LA TABLA CONCENTRADOS CON SU RESPECTIVA INFO<BR>
-            </p>
+            <div id="tablacon" class="col-12 offset-lg-12"></div>
         </div>
     </div>
 </div>
@@ -151,6 +148,12 @@ $rol = $_SESSION["rol"];
           <label id="lbcant" for="cantmp" class="form-label bg-secondary">Cantidad Materia Prima</label>
           <input id="cantmp" type="number" value="0" class="form-control" name="cantmp" required>
           <div id="helplbcant" class="form-text">Ingresa La Cantidad a Ingresar De Materia Prima</div><br>
+          <div id="selectindex">
+          <label id="lbconcentrado" for="concentrado" class="form-label bg-secondary">Concentrado</label>
+                &nbsp;&nbsp;&nbsp;
+                <select name="concentrado" id="concentrado" class="form-select" style="width:400px;">
+                </select><br> 
+          </div>
           <button type="button" id="btnModal" class="btn btn-dark" >Aceptar</button>
         </from>
       </div>
