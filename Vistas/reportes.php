@@ -1,4 +1,6 @@
 <?php
+include '../Modelos/credenciales.php';
+require_once '../Herramientas/mpdf/mpdf.php';
 session_start();
 $_SESSION["user"] = "Douglas Miguel";
 $_SESSION["rol"]="administrador";
@@ -54,7 +56,10 @@ include '../Modelos/header.php';
         </div>
         <div class="row">
         <div id="contentusuarios" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center margint">
-            <div id="infousuarios" class="col-12 offset-lg-12"></div>
+            <div id="infousuarios" class="col-12 offset-lg-12">
+            
+            <iframe src="../Reportes/ReporteMateriaPrima.pdf" style="width: 80%; height: 500px;" scrolling="yes">
+            </div>
           </div>
               <div class="alert alert-danger" role="alert">
                <span class="btn-dark">NOTA:</span>&nbsp;&nbsp;Solo Puedes Cambiar Rol De Un Usuario, No Puedes Eliminarlo, Ten
@@ -66,4 +71,42 @@ include '../Modelos/header.php';
 </div><br>
 <?php
 include '../Modelos/footer.php';
+?>
+<?php
+
+ //sacamos los datos de la base de datos
+ $con = new mysqli("localhost","root","", "elgordito");
+ $sql ="select * from materia_prima";
+ $res = $con->query($sql);
+ $tabla ="<table border='1'><thead><tr><th>CODIGO</th><th>NOMBRE</th><th>CANTIDAD</th></tr></thead><tbody>";
+ while($fila = mysqli_fetch_assoc($res)){
+     $tabla .= "<tr>";
+ 
+     $tabla .= "<td>";
+     $tabla .= $fila['id_mp'];
+     $tabla .= "</td>";
+ 
+     $tabla .= "<td>";
+     $tabla .= $fila['nombre'];
+     $tabla .= "</td>";
+ 
+     $tabla .= "<td>";
+     $tabla .= $fila['cantidad'];
+     $tabla .= "</td>";
+ 
+     $tabla .= "</tr>";
+ }
+ $tabla .= "</tbody></table>";
+ $con->close();
+ $res->close();
+ $reporte = new mPDF('c','A4');
+ $logo = "<img src='img/logo.png' style='width: 200px; height: 75px;'>";
+ $encabezado= "<H3>REPORTE DE MATERIA PRIMA</H3><hr>";
+ 
+ $reporte->WriteHTML($logo);
+ $reporte->WriteHTML($encabezado);
+ $reporte->WriteHTML($tabla);
+ $reporte->Output('../Reportes/ReporteMateriaPrima.pdf');
+
+
 ?>
